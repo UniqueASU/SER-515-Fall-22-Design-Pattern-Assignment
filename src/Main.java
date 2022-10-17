@@ -4,7 +4,7 @@ public class Main {
         Facade facade = new Facade();
 
         // User Authentication
-        boolean isValidUser = facade.userLogin();
+        boolean isValidUser = facade.login();
         if(isValidUser) {
             System.out.println("Welcome. Succesfully Logged In");
         } else {

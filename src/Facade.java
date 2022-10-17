@@ -4,9 +4,13 @@ import java.io.FileReader;
 import java.util.HashMap;
 import java.util.Scanner;
 public class Facade {
+    int UserType;
+    Product theSelectedProduct;
+    int nProductCategory;
+    Person thePerson;
     private int userType;
     private int user;
-    boolean userLogin() {
+    boolean login() {
 
         // UserName input
         System.out.println("Please enter your username: ");
@@ -60,4 +64,53 @@ public class Facade {
 
         return false;
     }
+
+    public void addTrading() {
+
+    }
+
+    public void viewTrading() {
+
+    }
+
+    public void decideBidding() {
+
+    }
+
+    public void discussBidding() {
+
+    }
+
+    public void submitBidding() {
+
+    }
+
+    public void remind() {
+
+    }
+
+    public void createUser(UserInfoItem userinfoitem) {
+
+    }
+
+    public void createProductList() {
+
+    }
+
+    public void AttachProductToUser() {
+
+    }
+
+    public Product SelectProduct() {
+        return null;
+    }
+
+    public void productOperation() {
+
+    }
+
+
+
+
+
 }
