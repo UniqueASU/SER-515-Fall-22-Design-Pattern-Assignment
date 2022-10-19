@@ -8,9 +8,9 @@ public class ReminderVisitor extends NodeVisitor {
 
 	}
 
-	public void visitTrading(Trading trading) {
-
-	}
+//	public void visitTrading(Trading trading) {
+//
+//	}
 
 	public void visitFacade(Facade facade) {
 
