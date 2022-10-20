@@ -1,3 +1,5 @@
+package ptbs;
+
 import ptbs.*;
 
 import java.io.BufferedReader;
@@ -94,6 +96,7 @@ public Facade(){
 
     boolean login(){
         System.out.println("Welcome. Please login with your credentials");
+
         Login login= new Login();
         login.setVisible(true);
         login.setModal(true);

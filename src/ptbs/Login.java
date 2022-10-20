@@ -1,4 +1,6 @@
+package ptbs;
 
+import ptbs.Facade;
 import ptbs.UserInfoItem;
 
 import java.awt.Rectangle;
@@ -58,7 +60,7 @@ public class Login extends JDialog{
         userPasswordLabel.setBounds(new Rectangle(82, 119, 80, 18));
         passwordText.setBounds(new Rectangle(170, 119, 300, 22));
 
-        loginButton.setText("Login");
+        loginButton.setText("ptbs.Login");
         loginButton.setBounds(new Rectangle(165, 212, 85, 28));
         loginButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(ActionEvent e) {
