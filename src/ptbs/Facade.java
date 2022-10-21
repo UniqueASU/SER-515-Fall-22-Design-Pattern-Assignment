@@ -1,171 +1,163 @@
-package ptbs;
+package PTBS;
+import java.io.*;
 
-import ptbs.*;
-
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.util.HashMap;
-import java.util.Scanner;
+// implementation of Facade design pattern
 public class Facade {
-    int userType;
-    Product theSelectedProduct=null;
-    int nProductCategory;
-    public ClassProductList productList;
-    Person thePerson;
 
-public Facade(){
+	public int userType;
 
-}
+	private Product SProduct = null;
 
+	private int nProductCategory = 0;
 
+	public ClassProductList productList;
 
-//    boolean login(UserInfoItem user) {
-//
-//        // UserName input
-//        System.out.println("Please enter your username: ");
-//        Scanner scanner = new Scanner(System.in);
-//        String username = scanner.nextLine().trim();
-//
-//        // Password input
-//        System.out.println("Please enter your password: ");
-//        String userPassword = scanner.nextLine().trim();
-//
-//        //Match username and password from file
-//        HashMap<String, String> buyerUserPassword = new HashMap<String, String>();
-//        HashMap<String, String> sellerUserPassword = new HashMap<String, String>();
-//
-//        try {
-//            File buyerDetails = new File(
-//                    "BuyerInfo.txt");
-//            BufferedReader buffRead
-//                    = new BufferedReader(new FileReader(buyerDetails));
-//            String text;
-//
-//            while ((text = buffRead.readLine()) != null) {
-//                String[] splitArr = text.split(":");
-//                buyerUserPassword.put(splitArr[0], splitArr[1]);
-//            }
-//
-//            File sellerDetails = new File("SellerInfo.txt");
-//            buffRead
-//                    = new BufferedReader(new FileReader(sellerDetails));
-//
-//            while ((text = buffRead.readLine()) != null) {
-//                String[] splitArr = text.split(":");
-//                sellerUserPassword.put(splitArr[0], splitArr[1]);
-//            }
-//
-//            //set user type
-//            if (buyerUserPassword.containsKey(username) && buyerUserPassword.get(username).equals(userPassword)) {
-//                userType = 0;
-//                return true;
-//            } else if (sellerUserPassword.containsKey(username) && sellerUserPassword.get(username).equals(userPassword)) {
-//                userType = 1;
-//                return true;
-//            } else {
-//                return false;
-//            }
-//
-//        } catch (Exception e) {
-//            System.err.println("There is an error reading the file" + e.getMessage());
-//        }
-//
-//
-//        return false;
-//    }
+	public Person thePerson;
 
-//    public void addTrading(Product product) {
-//        // read file and store values to the text file
-//
-//        TradingMenu trademenu;
-//        if (person1.type == 0) {
-//
-//            trademenu = new BuyerTradingMenu();
-//        }
-//
-//        else {
-//            trademenu = new SellerTradingMenu();
-//        }
-//
-//
-//        Trading trade = new Trading();
-//        trademenu.ShowMenu(trade, thePerson);
-//        product.AddTrading(trade);
-//    }
+	public Facade() {
 
-    boolean login(){
-        System.out.println("Welcome. Please login with your credentials");
+	}
 
-        Login login= new Login();
-        login.setVisible(true);
-        login.setModal(true);
-        return login.isExit();
-    }
+	public static boolean login(UserInfoItem user) {
 
-    public void addTrading(Product product){
-        TradingMenu trademenu;
-        if (thePerson.type == 0) {
-            trademenu = new BuyerTradingMenu();
-        }
-        else {
-            trademenu = new SellerTradingMenu();
-        }
+		System.out.println("LOGIN");
+		Login login= new Login();
 
-        Trading trade = new Trading();
-        trademenu.ShowMenu(trade, thePerson);
-        product.AddTrading(trade);
-    }
-
-    public void viewTrading() {
-        TradingMenu trademenu;
-        if(thePerson.type == 0) {
-            trademenu = new BuyerTradingMenu();
-        }
-        else { // if seller
-            trademenu = new SellerTradingMenu();
-        }
-        trademenu.ShowMenu(trade, thePerson );
-    }
-
-    public void decideBidding() {
-
-    }
-
-    public void discussBidding() {
-
-    }
-
-    public void submitBidding() {
-
-    }
-
-    public void remind() {
-
-    }
-
-    public void createUser(UserInfoItem userinfoitem) {
-
-    }
-
-    public void createProductList() {
-
-    }
-
-    public void AttachProductToUser() {
-
-    }
-
-    public Product SelectProduct() {
-        return null;
-    }
-
-    public void productOperation() {
-
-    }
+		login.setVisible(true);
+		login.setModal(true);
+		return login.isExit();
 
 
 
+	}
 
+	public void addTrading(Product product) {
+        // read file and store values to the text file
+
+		TradingMenu trademenu;
+		if (thePerson.type == 0) {
+
+			trademenu = new BuyerTradingMenu();
+		}
+
+		else {
+			trademenu = new SellerTradingMenu();
+		}
+
+
+		Trading trade = new Trading();
+		trademenu.ShowMenu(trade, thePerson);
+		product.AddTrading(trade);
+	}
+
+	public void viewTrading(Trading trade) {
+		TradingMenu trademenu;
+		// if buyer
+		if(thePerson.type == 0) {
+			trademenu = new BuyerTradingMenu();
+		}
+		else { // if seller
+			trademenu = new SellerTradingMenu();
+		}
+		trademenu.ShowMenu(trade, thePerson );
+
+	}
+// set the bidding price
+	public void decideBidding(Offering offer) {
+			OfferingMenu offerMenu = new OfferingMenu();
+			offerMenu.ShowMenu(offer);
+	}
+
+	public void discussBidding() {
+
+	}
+
+	public void submitBidding(Trading trade, Offering offer) {
+
+		trade.AddOffering(offer);
+	}
+
+	public void remind() {
+		Reminder rem = new Reminder();
+		rem.showReminder(thePerson.GetProductList());
+	}
+
+	public void createUser(UserInfoItem userinfoitem) {
+		// User is a Buyer
+		if(userinfoitem.type == UserInfoItem.USER_TYPE.Buyer) {
+			thePerson = new Buyer();
+		}
+		// User is a Seller
+		else {
+			thePerson = new Seller();
+		}
+
+		thePerson.userName = userinfoitem.name;
+	}
+
+	public void createProductList() {
+		productList = new ClassProductList();
+		productList.ReadFile("ProductInfo.txt");
+		System.err.println(productList);
+	}
+
+	public void AttachProductToUser() {
+		BufferedReader f;
+		try {
+			String name,uName, pName;
+			f = new BufferedReader(new FileReader("UserProduct.txt"));
+			while((name = f.readLine()) != null) {
+				uName = getUserName(name);
+				pName = getProductName(name);
+				if(uName.compareTo(thePerson.userName) == 0) {
+
+					SProduct = findProductByProductName(pName);
+					if(SProduct != null) {
+						thePerson.AddProduct(SProduct);
+					}
+				}
+			}
+
+			System.err.println(thePerson.toString());
+		}catch (Exception e) {
+			System.err.println(e);
+		}
+	}
+
+	private String getUserName(String name) {
+
+		int div = name.lastIndexOf(':');
+		return name.substring(0,div);
+	}
+
+
+	private Product findProductByProductName(String pName) {
+
+		ProductIterator iter = new ProductIterator(productList);
+		return iter.findByName(pName);
+	}
+
+
+	private String getProductName( String name) {
+		int div = name.lastIndexOf(':');
+		return name.substring(div + 1,name.length());
+	}
+
+	public boolean SelectProduct() {
+		ProductDialogSys ele = new ProductDialogSys();
+		SProduct = ele.ShowDlg(thePerson.productList);
+		thePerson.currentProduct = SProduct;
+		//nProductCategory = ele.nProductCategory;
+		//return ele.isLogout();
+		return false;
+	}
+
+	/**
+	 *
+	 */
+	public boolean productOperation() {
+		thePerson.createProductMenu(SProduct, nProductCategory);
+		return thePerson.showMenu();
+	}
 
 }

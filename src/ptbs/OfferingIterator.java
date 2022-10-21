@@ -1,36 +1,42 @@
-package ptbs;
+package PTBS;
 
 import java.util.ArrayList;
+// implements Iterator design pattern
+public class OfferingIterator extends ListIterator<Offering> {
 
-//Iterator Design Pattern
-public class OfferingIterator extends ListIterator<Offering>{
-    private OfferingList offeringList;
-    public OfferingIterator(ArrayList<Offering> items) {
-        super(items);
-    }
+	public OfferingIterator(ArrayList<Offering> items) {
+		super(items);
+	}
 
-    public boolean hasNext() {
-        if (curIndx >= offeringList.size() - 1) {
-            return false;
-        } else
-            return true;
-    }
+	private OfferingList offeringList;
 
-    public Offering Next() {
-        if (hasNext() == true) {
-            curIndx++;
-            return items.get(curIndx);
-        } else
-            return null;
-    }
+	public boolean hasNext() {
+		if (curIndx >= offeringList.size() - 1) {
+			return false;
+		} else
+			return true;
+	}
 
-    public void MoveToHead() {
-        Remove();
-        curIndx = 0;
-    }
+	public Offering Next() {
+		if (hasNext() == true) {
+			curIndx++;
+			return items.get(curIndx);
+		} else
+			return null;
+	}
 
-    public void Remove() {
-        offeringList.remove(curIndx);
-    }
+	public void MoveToHead() {
+		Remove();
+		curIndx = 0;
+	}
+
+	public void Remove() {
+		offeringList.remove(curIndx);
+	}
+
+	@Override
+	public Offering findByName(String name) {
+		return null;
+	}
 
 }

@@ -1,34 +1,46 @@
-package ptbs;
+package PTBS;
 
-public class ProduceProductMenu extends ProductMenu{
 
-    @Override
-    public void showMenu(Product product) {
+//This class is derived from ProductMenu and implements Bridge design pattern.
+public class ProduceProductMenu extends ProductMenu {
 
-    }
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
+	ProduceProductMenu() {
+		
+	}
 
-    @Override
-    public void showAddButton() {
+	public void ShowMenu(Product product) {
 
-    }
+	}
 
-    @Override
-    public void showViewButton() {
+	public void showAddButton() {
 
-    }
+	}
 
-    @Override
-    public void showRadioButton() {
+	public void showViewButton() {
 
-    }
+	}
 
-    @Override
-    public void showLabels() {
+	public void showRadioButton() {
 
-    }
+	}
 
-    @Override
-    public void showComboxes() {
+	public void showLabels() {
 
-    }
+	}
+
+	public void showComboxes() {
+
+	}
+
+	@Override
+	public void showMenu(Product product) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

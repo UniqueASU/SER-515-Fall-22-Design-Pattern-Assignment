@@ -1,1 +1,0 @@
-# SER-515-Fall-22-Design-Pattern-Assignment

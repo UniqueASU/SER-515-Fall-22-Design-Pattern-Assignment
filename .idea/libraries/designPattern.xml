@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="designPattern">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/designPattern.zip!/" />
+      <root url="jar://$PROJECT_DIR$/online_trading.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

@@ -1,23 +1,30 @@
-package ptbs;
+package PTBS;
 
-public class Buyer extends Person{
-    public void showMenu() {
-        showAddButton();
-        showLabels();
-        showViewButton();
-        showRadioButton();
-    }
-    @Override
-    public ProductMenu createProductMenu(Product product, int category) {
-        if(category==0){
-            theProductMenu = new ProduceProductMenu();
-        }
-        else {
-            theProductMenu = new MeatProductMenu();
-        }
-        return theProductMenu;
-    }
-    public Buyer(){
-        type=0;
-    }
+
+//uses bridge design pattern and is a subclass of Person
+public class Buyer extends Person {
+	public Buyer(){
+		
+		type = 0;
+	}
+	public boolean showMenu() {
+		showAddButton();
+		showLabels();
+		showViewButton();
+		showRadioButton();
+		return exit();
+	}
+
+	public ProductMenu createProductMenu(Product product, int nCategory) {
+		if (nCategory == 1) {
+			theProductMenu = new ProduceProductMenu();
+		}
+		else {
+			theProductMenu = new  MeatProductMenu();
+		}
+		return theProductMenu ;
+		
+	
+	}
+	
 }
